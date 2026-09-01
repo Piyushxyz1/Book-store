@@ -1,15 +1,20 @@
 const ProductCard = ({ product, addToCart }) => {
   return (
     <div className="product-card">
-      <div className="product-image">
-        {product.image}
+
+      <div className="product-image-container">
+        <img
+          className="product-image"
+          src={product.image}
+          alt={product.name}
+        />
       </div>
 
       <div className="product-info">
         <a href={product.href} className="view-book-button">
           View Book
         </a>
-        
+
         <h3>{product.name}</h3>
 
         <p className="product-description">
@@ -21,13 +26,12 @@ const ProductCard = ({ product, addToCart }) => {
             ${product.price.toFixed(2)}
           </h4>
 
-          <button
-            onClick={() => addToCart(product)}
-          >
+          <button onClick={() => addToCart(product)}>
             Add to Cart
           </button>
         </div>
       </div>
+
     </div>
   );
 };

@@ -3,6 +3,7 @@ import crypto from "crypto";
 import Order from "../model/orderModel.js";
 import User from "../model/user.Model.js";
 import redisClient from "../config/redis.js";
+import transporter from "../config/mailer.js";
 
 const razorpay = new Razorpay({
   key_id: process.env.api_key,
@@ -81,7 +82,6 @@ const createPayment = async (req, res) => {
   }
 };
 
-
 // VERIFY PAYMENT
 const verifyPayment = async (req, res) => {
   try {
@@ -93,6 +93,7 @@ const verifyPayment = async (req, res) => {
       razorpay_signature,
     } = req.body;
 
+    // Verify Razorpay signature
     const generatedSignature = crypto
       .createHmac(
         "sha256",
@@ -107,6 +108,19 @@ const verifyPayment = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Payment verification failed",
+      });
+    }
+
+    // Prevent duplicate order
+    const existingOrder = await Order.findOne({
+      paymentId: razorpay_payment_id,
+    });
+
+    if (existingOrder) {
+      return res.json({
+        success: true,
+        message: "Order already created",
+        order: existingOrder,
       });
     }
 
@@ -130,6 +144,14 @@ const verifyPayment = async (req, res) => {
       cartData = user.cartData;
     }
 
+    // Check cart
+    if (!cartData || Object.keys(cartData).length === 0) {
+      return res.json({
+        success: false,
+        message: "Cart is empty",
+      });
+    }
+
     const items = Object.entries(cartData).map(
       ([productId, product]) => ({
         productId: Number(productId),
@@ -145,15 +167,36 @@ const verifyPayment = async (req, res) => {
       0
     );
 
-    // NOW create MongoDB order
+    // Create MongoDB order
     const order = await Order.create({
       userId,
       items,
       amount,
       paymentId: razorpay_payment_id,
+      razorpayOrderId: razorpay_order_id,
       payment: true,
       status: "Order processing",
     });
+
+    // Get user for email
+    const username = await User.findById(userId);
+
+    if (username) {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: username.email,
+        subject: "Order Received Successfully",
+        html: `
+          <h2>Order Received 🎉</h2>
+          <p>Hi ${username.name},</p>
+          <p>Your order has been successfully received.</p>
+          <p>Order ID: ${order._id}</p>
+          <p>Amount: ₹${amount}</p>
+          <p>Status: Order processing</p>
+          <p>Thank you for shopping with us!</p>
+        `,
+      });
+    }
 
     // Clear Redis cart
     await redisClient.del(`cart:${userId}`);
@@ -178,6 +221,8 @@ const verifyPayment = async (req, res) => {
     });
   }
 };
+
+
 
 
 export {

@@ -20,7 +20,7 @@ const Home = ({ token }) => {
       id: 1,
       name: "The Psychology of Money",
       price: 19.99,
-      image: "📘",
+      image: "/images/psychology-of-money.jpg",
       description: "Learn how people think about money, wealth, and financial decisions.",
       href: "/book/psychology-of-money"
     },
@@ -28,7 +28,7 @@ const Home = ({ token }) => {
       id: 2,
       name: "Atomic Habits",
       price: 24.99,
-      image: "📕",
+      image: "/images/atomic-habits.jpg",
       description: "Build better habits and make meaningful changes in your daily life.",
       href: "/book/atomic-habits"
     },
@@ -36,7 +36,7 @@ const Home = ({ token }) => {
       id: 3,
       name: "The Alchemist",
       price: 14.99,
-      image: "📗",
+      image: "/images/the-alchemist.png",
       description: "A timeless story about dreams, purpose, and following your journey.",
       href: "/book/the-alchemist"
     },
@@ -44,7 +44,7 @@ const Home = ({ token }) => {
       id: 4,
       name: "Rich Dad Poor Dad",
       price: 21.99,
-      image: "📙",
+      image: "/images/rich-dad-poor-dad.webp",
       description: "Explore financial education, investing, and building wealth.",
       href: "/book/rich-dad-poor-dad"
     },
@@ -52,7 +52,7 @@ const Home = ({ token }) => {
       id: 5,
       name: "Deep Work",
       price: 22.99,
-      image: "📓",
+      image: "/images/Deep-Work.jpg",
       description: "Discover strategies for focused work and improving productivity.",
       href: "/book/deep-work"
     },
@@ -60,7 +60,7 @@ const Home = ({ token }) => {
       id: 6,
       name: "Ikigai",
       price: 17.99,
-      image: "📔",
+      image: "/images/ikigai.webp",
       description: "Explore the Japanese concept of finding purpose and meaning in life.",
       href: "/book/ikigai"
     },

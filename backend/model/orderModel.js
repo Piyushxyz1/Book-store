@@ -8,6 +8,9 @@ const orderSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    razorpayOrderId: {
+      type: String,
+    },
 
     items: [
       {
@@ -51,6 +54,9 @@ const orderSchema = new mongoose.Schema(
     paymentId: {
       type: String,
       default: null,
+      unique: true,
+      sparse: true,
+
     },
 
     payment: {
