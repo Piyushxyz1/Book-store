@@ -105,24 +105,7 @@ const Home = ({ token }) => {
   return (
     <div className="home">
 
-      {/* NAVBAR */}
-
-      <nav className="navbar">
-        <div className="logo">
-          Book<span>Store</span>
-        </div>
-
-        <div className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#products">Books</a>
-        </div>
-
-        <div className="cart-icon">
-          <Link to={"/cart"}>🛒</Link>
-          <span>{totalCartItems}</span>
-        </div>
-      </nav>
+      
 
       {/* HERO SECTION */}
 

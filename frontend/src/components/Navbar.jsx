@@ -1,107 +1,381 @@
-import { FaShoppingCart, FaUser } from "react-icons/fa";
+
+import {
+  FaShoppingCart,
+  FaUser,
+  FaChevronDown,
+} from "react-icons/fa";
+
+import { useState } from "react";
+
 import LoginModal from "./loginModal";
+
 import { useSelector, useDispatch } from "react-redux";
-import { openLogin, closeLogin } from "../reduxStore/loginModalSlice";
+
+import {
+  openLogin,
+  closeLogin,
+} from "../reduxStore/loginModalSlice";
+
+import { Link } from "react-router-dom";
+
+import "./navbar.css";
+
 
 const Navbar = ({ token, onLogout }) => {
+
   const dispatch = useDispatch();
+
+  const cart = useSelector(
+    (state) => state.cart.items
+  );
 
   const isLoginOpen = useSelector(
     (state) => state.loginModal.isLoginOpen
   );
 
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+
   const onLoginClick = () => {
     dispatch(openLogin());
   };
 
-  return (
-    <nav
-      style={{
-        background: "#1a1a2e",
-        color: "white",
-        padding: "1rem 2rem",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        position: "sticky",
-        top: 0,
-        zIndex: 100,
-        boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-        }}
-      >
-        <FaShoppingCart size={24} />
 
-        <span
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "bold",
-          }}
+  const totalCartItems = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+
+  const closeDropdown = () => {
+    setOpenDropdown(null);
+  };
+
+
+  /* =========================
+     DROPDOWN DATA
+  ========================= */
+
+  const dropdownData = {
+
+    bestsellers: {
+      items: [
+        "BW Bestsellers",
+        "International Bestsellers",
+        "Min 40% Off Bestsellers",
+        "Min 50% Off Bestsellers",
+        "Upto 45% Off on Bestsellers",
+      ],
+    },
+
+
+    shopByAge: {
+      items: [
+        "0-2 Years",
+        "3-5 Years",
+        "6-8 Years",
+        "9-12 Years",
+        "Teen and Young Adults",
+      ],
+    },
+
+
+    recommend: {
+      items: [
+        "Award Winners",
+        "Best Books of 2025",
+        "Best Summer Reads",
+        "Best Winter Reads",
+        "BW Monthly Picks",
+      ],
+    },
+
+
+    budget: {
+      items: [
+        "Above Rs. 499",
+        "Rs. 300 - Rs. 499",
+        "Rs. 99 - Rs. 299",
+        "Under Rs 100",
+      ],
+    },
+
+
+    browse: {
+      items: [
+        "Best Books of the Year",
+        "Book Awards",
+        "Books Box Sets",
+        "Books in Foreign Languages",
+        "Books in Indian Languages",
+        "International Hardcovers",
+        "Large Print Books",
+        "New Releases",
+        "Paperbacks up to 45% Off",
+        "Special Editions for Gifts",
+        "Sprayed Edges",
+      ],
+    },
+
+
+    subjects: {
+      items: [
+        "Modern & Contemporary Fiction",
+        "General, Modern and Contemporary Fiction",
+        "Fiction: General and Literary",
+        "Thriller / Suspense Fiction",
+        "Christianity",
+        "Advice on Careers and Achieving Success",
+        "History",
+        "Self-help, Personal Development and Practical Advice",
+        "Classic Crime and Mystery Fiction",
+        "Ancient Sagas and Epics",
+        "Classic Fiction",
+        "Crime and Mystery Fiction",
+        "Action and Adventure Stories",
+        "Nature and Animal Stories",
+        "Fantasy",
+      ],
+    },
+
+  };
+
+
+  /* =========================
+     DROPDOWN COMPONENT
+  ========================= */
+
+  const Dropdown = ({
+    label,
+    items,
+    menuKey,
+    isMega = false,
+  }) => {
+
+    return (
+
+      <div
+        className={`dropdown-container ${
+          isMega ? "mega-dropdown-container" : ""
+        }`}
+
+        onMouseEnter={() =>
+          setOpenDropdown(menuKey)
+        }
+
+        onMouseLeave={closeDropdown}
+      >
+
+        <button
+          type="button"
+          className="dropdown-trigger"
         >
-          ShopVibe
-        </span>
+
+          {label}
+
+          <FaChevronDown
+            className={
+              openDropdown === menuKey
+                ? "rotated"
+                : ""
+            }
+          />
+
+        </button>
+
+
+        {openDropdown === menuKey && (
+
+          <div
+            className={`dropdown-menu ${
+              isMega ? "mega-menu" : ""
+            }`}
+          >
+
+            {items.map((item, index) => (
+
+              <Link
+                key={index}
+                to={`/category/${encodeURIComponent(item)}`}
+                className="dropdown-item"
+              >
+                {item}
+              </Link>
+
+            ))}
+
+          </div>
+
+        )}
+
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "1.5rem",
-        }}
-      >
-        {token ? (
-          <>
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
-            >
-              <FaUser size={16} />
-            </span>
+    );
+  };
+
+
+  return (
+
+    <>
+
+      {/* =========================
+          TOP BAR
+      ========================= */}
+
+      <div className="top-bar">
+
+        <div className="top-bar-left">
+
+          <span>
+            Free Shipping on orders above Rs. 499
+          </span>
+
+        </div>
+
+
+        <div className="top-bar-right">
+
+          {token ? (
+
+            <>
+
+              <span className="user-icon">
+
+                <FaUser size={16} />
+
+                <span>
+                  Welcome!
+                </span>
+
+              </span>
+
+
+              <button
+                className="logout-btn"
+                onClick={onLogout}
+              >
+                Logout
+              </button>
+
+            </>
+
+          ) : (
 
             <button
-              onClick={onLogout}
-              style={{
-                background: "#e74c3c",
-                color: "white",
-                padding: "0.4rem 1.2rem",
-                borderRadius: "6px",
-                fontWeight: "500",
-              }}
+              className="signin-btn"
+              onClick={onLoginClick}
             >
-              Logout
+              Sign In
             </button>
-          </>
-        ) : (
-          <button
-            onClick={onLoginClick}
-            style={{
-              background: "#4a6cf7",
-              color: "white",
-              padding: "0.4rem 1.5rem",
-              borderRadius: "6px",
-              fontWeight: "500",
-            }}
-          >
-            Sign In
-          </button>
-        )}
+
+          )}
+
+        </div>
+
       </div>
+
+
+      {/* =========================
+          MAIN NAVBAR
+      ========================= */}
+
+      <nav className="navbar">
+
+        {/* LOGO */}
+
+        <div className="logo">
+
+          Book<span>Store</span>
+
+        </div>
+
+
+        {/* NAV LINKS */}
+
+        <div className="nav-links">
+
+          <Dropdown
+            label="Bestsellers"
+            items={dropdownData.bestsellers.items}
+            menuKey="bestsellers"
+          />
+
+
+          <Dropdown
+            label="Shop by Age"
+            items={dropdownData.shopByAge.items}
+            menuKey="shopByAge"
+          />
+
+
+          <Dropdown
+            label="We Recommend"
+            items={dropdownData.recommend.items}
+            menuKey="recommend"
+          />
+
+
+          <Dropdown
+            label="Budget"
+            items={dropdownData.budget.items}
+            menuKey="budget"
+          />
+
+
+          <Dropdown
+            label="Browse"
+            items={dropdownData.browse.items}
+            menuKey="browse"
+            isMega={true}
+          />
+
+
+          <Dropdown
+            label="Subjects"
+            items={dropdownData.subjects.items}
+            menuKey="subjects"
+            isMega={true}
+          />
+
+        </div>
+
+
+        {/* CART */}
+
+        <div className="cart-icon">
+
+          <Link to="/cart">
+
+            <FaShoppingCart />
+
+            {totalCartItems > 0 && (
+
+              <span>
+                {totalCartItems}
+              </span>
+
+            )}
+
+          </Link>
+
+        </div>
+
+      </nav>
+
+
+      {/* LOGIN MODAL */}
 
       <LoginModal
         isOpen={isLoginOpen}
-        onClose={() => dispatch(closeLogin())}
+        onClose={() =>
+          dispatch(closeLogin())
+        }
       />
-    </nav>
+
+    </>
+
   );
 };
+
 
 export default Navbar;
