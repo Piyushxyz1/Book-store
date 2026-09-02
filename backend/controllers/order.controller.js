@@ -210,6 +210,7 @@ const verifyPayment = async (req, res) => {
       success: true,
       message: "Payment successful",
       order,
+      username:username.name
     });
 
   } catch (error) {

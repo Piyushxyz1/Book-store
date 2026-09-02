@@ -1,14 +1,15 @@
-
 import React from "react";
 import "./cartItems.css";
 import axios from "axios";
 import { removeFromCart } from "../reduxStore/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ token }) => {
   const url = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const cartItems = useSelector((state) => state.cart.items);
 
@@ -56,6 +57,7 @@ const Cart = ({ token }) => {
 
       if (!data.success) {
         toast.error(data.message);
+        navigate("/failure");
         return;
       }
 
@@ -91,18 +93,23 @@ const Cart = ({ token }) => {
             );
 
             if (verifyResponse.data.success) {
-              toast.success("Payment successful!");
-
               // Remove purchased items from Redux
               cartItems.forEach((item) => {
                 dispatch(removeFromCart(item));
               });
+
+              // Go to success page
+              navigate("/success", {
+                state: {
+                  username: verifyResponse.data.username,
+                },
+              });
             } else {
-              toast.error("Payment verification failed");
+              navigate("/failure");
             }
           } catch (error) {
             console.log(error);
-            toast.error("Payment verification failed");
+            navigate("/failure");
           }
         },
 
@@ -113,6 +120,12 @@ const Cart = ({ token }) => {
         theme: {
           color: "#2563eb",
         },
+
+        modal: {
+          ondismiss: function () {
+            navigate("/failure");
+          },
+        },
       };
 
       const razorpay = new window.Razorpay(options);
@@ -120,7 +133,7 @@ const Cart = ({ token }) => {
       razorpay.open();
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      navigate("/failure");
     }
   };
 
@@ -136,7 +149,6 @@ const Cart = ({ token }) => {
 
   return (
     <div className="cart-page">
-
       <div className="cart-wrapper">
 
         {/* HEADER */}

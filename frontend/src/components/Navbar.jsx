@@ -10,6 +10,7 @@ import { useState } from "react";
 import LoginModal from "./loginModal";
 
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import {
   openLogin,
@@ -22,6 +23,7 @@ import "./navbar.css";
 
 
 const Navbar = ({ token, onLogout }) => {
+  const navigate = useNavigate()
 
   const dispatch = useDispatch();
 
@@ -283,7 +285,7 @@ const Navbar = ({ token, onLogout }) => {
 
         {/* LOGO */}
 
-        <div className="logo">
+        <div className="logo" onClick={()=>navigate("/")}>
 
           Book<span>Store</span>
 

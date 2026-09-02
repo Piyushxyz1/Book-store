@@ -5,15 +5,11 @@ import ProductCard from "../components/productCard";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart as addToCartRedux } from "../reduxStore/cartSlice";
 
-const Home = ({ token }) => {
-  const cart = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch();
 
-  console.log(cart);
+const Home = ({addToCart }) => {
 
-  const url = import.meta.env.VITE_API_URL;
+
 
   const products = [
     {
@@ -71,36 +67,6 @@ const Home = ({ token }) => {
   };
 
   // ADD TO CART
-
-  const addToCart = async (product) => {
-    try {
-      const response = await axios.post(
-        `${url}/api/cart/add`,
-        {
-          itemId: product.id,
-          productName: product.name,
-          price: product.price,
-        },
-        {
-          headers: {
-            token: token,
-          },
-        }
-      );
-
-      if (response.data.success) {
-        toast.success(response.data.message);
-        dispatch(addToCartRedux(product));
-      }
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
-
-  const totalCartItems = cart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
 
   return (
     <div className="home">

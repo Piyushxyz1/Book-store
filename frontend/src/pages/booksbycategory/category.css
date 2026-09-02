@@ -1,0 +1,281 @@
+.category-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding: 25px 7% 60px;
+  color: #222;
+}
+
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 22px;
+}
+
+.breadcrumb span {
+  margin: 0 8px;
+  color: #aaa;
+}
+
+
+/* =========================
+   CATEGORY HERO
+========================= */
+
+.category-hero {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 45px 50px;
+  margin-bottom: 25px;
+}
+
+.category-hero-content {
+  max-width: 850px;
+}
+
+.category-label,
+.section-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.category-hero h1 {
+  margin: 0 0 8px;
+  font-size: 38px;
+  line-height: 1.2;
+  color: #181818;
+}
+
+.category-hero h2 {
+  margin: 0 0 18px;
+  font-size: 19px;
+  font-weight: 500;
+  color: #666;
+}
+
+.category-hero p {
+  margin: 8px 0;
+  max-width: 800px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666;
+}
+
+
+/* =========================
+   CATEGORY INFO
+========================= */
+
+.category-info {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 25px 30px;
+  margin-bottom: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.category-info h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+}
+
+.category-info p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.category-stats {
+  min-width: 130px;
+  text-align: center;
+  padding-left: 30px;
+  border-left: 1px solid #ddd;
+}
+
+.category-stats strong {
+  display: block;
+  font-size: 28px;
+}
+
+.category-stats span {
+  font-size: 13px;
+  color: #777;
+}
+
+
+/* =========================
+   BOOK SECTION
+========================= */
+
+.books-section {
+  margin-top: 10px;
+}
+
+.books-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+
+.books-header h2 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.books-header p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* =========================
+   SORT
+========================= */
+
+.sort-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-box span {
+  font-size: 14px;
+  color: #666;
+}
+
+.sort-box select {
+  padding: 10px 14px;
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+
+/* =========================
+   BOOK GRID
+========================= */
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+
+/* =========================
+   FOOTER CONTENT
+========================= */
+
+.category-footer {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  margin-top: 55px;
+  padding: 35px 40px;
+  text-align: center;
+}
+
+.category-footer h2 {
+  margin: 0 0 12px;
+  font-size: 25px;
+}
+
+.category-footer p {
+  max-width: 800px;
+  margin: 8px auto;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .books-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 850px) {
+
+  .category-page {
+    padding: 20px 5% 50px;
+  }
+
+  .category-hero {
+    padding: 35px;
+  }
+
+  .category-hero h1 {
+    font-size: 32px;
+  }
+
+  .books-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .category-info {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .books-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-info {
+    flex-direction: column;
+  }
+
+  .category-stats {
+    border-left: none;
+    border-top: 1px solid #ddd;
+    padding: 20px 0 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-hero {
+    padding: 25px;
+  }
+
+  .category-hero h1 {
+    font-size: 27px;
+  }
+
+  .category-footer {
+    padding: 25px;
+  }
+}

@@ -1,0 +1,99 @@
+
+.payment-page {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: #f8f9fa;
+}
+
+.payment-card {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  padding: 45px 35px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.payment-icon {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.success-icon {
+  background: #e8f7ee;
+  color: #20a05a;
+}
+
+.error-icon {
+  background: #fdeaea;
+  color: #dc3545;
+}
+
+.payment-card h1 {
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+
+.payment-message {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.payment-info {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.email-message {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.payment-button,
+.secondary-button {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.payment-button {
+  background: #222;
+  color: white;
+}
+
+.payment-button:hover {
+  background: #000;
+}
+
+.secondary-button {
+  background: #e9ecef;
+  color: #333;
+}
+
+.secondary-button:hover {
+  background: #dfe2e5;
+}
+
+.payment-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
