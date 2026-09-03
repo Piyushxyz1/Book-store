@@ -11,7 +11,13 @@ configDotenv()
 
 const app = express();
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://frontend-gs5h.onrender.com"
+  ],
+  credentials: true
+}));
 
 app.use("/api",userRoutes)
 app.use("/api/cart", cartRouter);
