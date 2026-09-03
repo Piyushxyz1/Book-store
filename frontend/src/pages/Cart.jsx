@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const Cart = ({ token }) => {
-  const url = import.meta.env.VITE_API_URL;
+const Cart = ({ token ,url}) => {
+ 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
