@@ -25,7 +25,7 @@ const App = () => {
   const token = localStorage.getItem("token");
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch()
-  const url = import.meta.env.VITE_API_URL;
+  const url = import.meta.env.VITE_API_URL || "http://localhost:4000" ;
 
   const onLogout = () => {
     localStorage.removeItem("token");
