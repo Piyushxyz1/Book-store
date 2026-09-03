@@ -9,13 +9,10 @@ body {
   background: #f5f5f5;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
+/* =========================
+   MODAL OVERLAY
+========================= */
 
-/* Modal overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -23,19 +20,27 @@ button {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 1000;
 }
 
+/* =========================
+   MODAL
+========================= */
+
 .modal-content {
   background: white;
-  padding: 2rem;
+  padding: 32px;
   border-radius: 12px;
   width: 380px;
   max-width: 90%;
+
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
   animation: slideDown 0.3s ease;
 }
 
@@ -44,56 +49,138 @@ button {
     transform: translateY(-30px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
+/* =========================
+   HEADING
+========================= */
+
 .modal-content h2 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
   text-align: center;
   color: #1a1a2e;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.modal-content form {
+  width: 100%;
 }
 
 .modal-content input {
   width: 100%;
   padding: 12px 14px;
   margin-bottom: 14px;
+
   border: 1px solid #ddd;
   border-radius: 8px;
+
   font-size: 1rem;
-  transition: border 0.2s;
+  outline: none;
+
+  transition: border 0.2s, box-shadow 0.2s;
 }
 
 .modal-content input:focus {
   border-color: #4a6cf7;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
 }
 
-.modal-content .login-btn {
+/* =========================
+   ALL BUTTONS
+========================= */
+
+.modal-content button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.modal-content form button[type="submit"] {
   width: 100%;
   padding: 12px;
+
   background: #4a6cf7;
   color: white;
+
   border-radius: 8px;
+
   font-size: 1rem;
   font-weight: 600;
+
+  margin-top: 4px;
+  margin-bottom: 18px;
+
   transition: background 0.2s;
 }
 
-.modal-content .login-btn:hover {
+.modal-content form button[type="submit"]:hover {
   background: #3a56d4;
 }
 
-.modal-content .close-btn {
-  display: block;
-  margin: 12px auto 0;
-  background: transparent;
+/* =========================
+   ACCOUNT TEXT
+========================= */
+
+.modal-content p {
+  text-align: center;
   color: #666;
   font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   CREATE ACCOUNT / SIGN IN
+========================= */
+
+.modal-content > button:not(:last-child) {
+  display: block;
+  margin: 0 auto 18px;
+
+  background: transparent;
+  color: #4a6cf7;
+
+  font-weight: 600;
+}
+
+.modal-content > button:not(:last-child):hover {
   text-decoration: underline;
 }
 
-.modal-content .close-btn:hover {
-  color: #1a1a2e;
+/* =========================
+   CANCEL BUTTON
+========================= */
+
+.modal-content > button:last-child {
+  display: block;
+  width: 100%;
+
+  padding: 11px;
+
+  background: #f1f1f1;
+  color: #555;
+
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+
+  margin-top: 4px;
+
+  transition: background 0.2s;
+}
+
+.modal-content > button:last-child:hover {
+  background: #e5e5e5;
 }
