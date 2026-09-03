@@ -103,7 +103,7 @@ const App = () => {
         />
 
         <Route path='/cart' element={token ? <Cart token={token} /> : <Navigate to="/" />} />
-        <Route path="/book/:bookId" element={<BookContent />} />
+        <Route path='/book/:id'element= {<BookContent/>}/>   
         <Route path='/category/:categoryName' element={<CategoryPage  addToCart = {addToCart} />} />
         <Route path = "/success" element = {<PaymentSuccess/>}/>
         <Route path = "/failure" element = {<PaymentFailed/>}/>

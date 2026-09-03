@@ -17,13 +17,10 @@ app.use("/api",userRoutes)
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
+const PORT = process.env.PORT || 4000;
 
+app.listen(PORT, () => {
+  connectDB();
 
-const PORT = 4000
-
-app.listen(PORT,()=>{
-  
-    connectDB()
-
-    console.log(`server is running on ${PORT}`)
-})
+  console.log(`server is running on ${PORT}`);
+});

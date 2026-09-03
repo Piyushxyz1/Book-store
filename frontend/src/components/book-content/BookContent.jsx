@@ -1,12 +1,14 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { booksData } from "./booksData";
 import "./book-content.css";
 
 const BookContent = () => {
-  const { bookId } = useParams();
 
-  const book = booksData.find((book) => book.slug === bookId);
+  const {id} = useParams()
+
+
+  const book = booksData.find((book) => book.slug === id);
 
   if (!book) {
     return (

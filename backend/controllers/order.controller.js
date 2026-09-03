@@ -194,6 +194,7 @@ const verifyPayment = async (req, res) => {
           <p>Amount: ₹${amount}</p>
           <p>Status: Order processing</p>
           <p>Thank you for shopping with us!</p>
+          <p>This is just a test message do not reply to this mail</p>
         `,
       });
     }
