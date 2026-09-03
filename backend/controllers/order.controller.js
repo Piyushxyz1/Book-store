@@ -7,7 +7,7 @@ import transporter from "../config/mailer.js";
 
 const razorpay = new Razorpay({
   key_id: process.env.api_key,
-  Key_Secret: process.env.Key_Secret,
+  key_secret: process.env.Key_Secret,
 });
 
 
