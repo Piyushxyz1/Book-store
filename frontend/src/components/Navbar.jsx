@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 
 
-const Navbar = ({ token, onLogout }) => {
+const Navbar = ({ token, onLogout ,url }) => {
   const navigate = useNavigate()
 
   const dispatch = useDispatch();
@@ -369,6 +369,7 @@ const Navbar = ({ token, onLogout }) => {
 
       <LoginModal
         isOpen={isLoginOpen}
+        url = {url}
         onClose={() =>
           dispatch(closeLogin())
         }

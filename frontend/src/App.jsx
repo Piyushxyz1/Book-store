@@ -88,7 +88,7 @@ const App = () => {
     <div>
       <ToastContainer />
       <Navbar
-        token={token} onLogout={onLogout} navigate={navigate}
+        token={token} onLogout={onLogout} navigate={navigate} url = {url}
       />
       <Routes>
         <Route

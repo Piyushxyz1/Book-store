@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const LoginModal = ({ isOpen, onClose}) => {
+const LoginModal = ({ isOpen, onClose,url}) => {
   const navigate = useNavigate();
 
   const [mode, setMode] = useState("signin");
@@ -34,7 +34,7 @@ const LoginModal = ({ isOpen, onClose}) => {
 
       if (mode === "signin") {
         const response = await fetch(
-          "http://localhost:4000/api/login",
+          `${url}/api/login`,
           {
             method: "POST",
             headers: {
@@ -72,7 +72,7 @@ const LoginModal = ({ isOpen, onClose}) => {
 
       else {
         const response = await fetch(
-          "http://localhost:4000/api/signup",
+          `${url}/api/signup`,
           {
             method: "POST",
             headers: {
