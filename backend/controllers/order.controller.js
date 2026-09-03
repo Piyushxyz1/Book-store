@@ -17,8 +17,9 @@ const createPayment = async (req, res) => {
     const userId = req.user.id;
 
     const cachedCart = await redisClient.get(`cart:${userId}`);
+
     console.log("API KEY EXISTS:", !!process.env.api_key);
-console.log("SECRET EXISTS:", !!process.env.Key_Secret);
+    console.log("SECRET EXISTS:", !!process.env.Key_Secret);
 
     let cartData;
 
@@ -83,6 +84,7 @@ console.log("SECRET EXISTS:", !!process.env.Key_Secret);
     });
   }
 };
+
 
 // VERIFY PAYMENT
 const verifyPayment = async (req, res) => {
@@ -183,22 +185,27 @@ const verifyPayment = async (req, res) => {
     // Get user for email
     const username = await User.findById(userId);
 
+    // Send email
     if (username) {
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: username.email,
-        subject: "Order Received Successfully",
-        html: `
-          <h2>Order Received 🎉</h2>
-          <p>Hi ${username.name},</p>
-          <p>Your order has been successfully received.</p>
-          <p>Order ID: ${order._id}</p>
-          <p>Amount: ₹${amount}</p>
-          <p>Status: Order processing</p>
-          <p>Thank you for shopping with us!</p>
-          <p>This is just a test message do not reply to this mail</p>
-        `,
-      });
+      try {
+        await transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: username.email,
+          subject: "Order Received Successfully",
+          html: `
+            <h2>Order Received 🎉</h2>
+            <p>Hi ${username.name},</p>
+            <p>Your order has been successfully received.</p>
+            <p>Order ID: ${order._id}</p>
+            <p>Amount: ₹${amount}</p>
+            <p>Status: Order processing</p>
+            <p>Thank you for shopping with us!</p>
+            <p>This is just a test message do not reply to this mail</p>
+          `,
+        });
+      } catch (emailError) {
+        console.log("EMAIL ERROR:", emailError);
+      }
     }
 
     // Clear Redis cart
@@ -213,7 +220,7 @@ const verifyPayment = async (req, res) => {
       success: true,
       message: "Payment successful",
       order,
-      username:username.name
+      username: username?.name,
     });
 
   } catch (error) {
@@ -225,8 +232,6 @@ const verifyPayment = async (req, res) => {
     });
   }
 };
-
-
 
 
 export {
