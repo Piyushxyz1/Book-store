@@ -7,7 +7,7 @@ import transporter from "../config/mailer.js";
 
 const razorpay = new Razorpay({
   key_id: process.env.api_key,
-  KEY_Secret: process.env.KEY_Secret,
+  Key_Secret: process.env.Key_Secret,
 });
 
 
@@ -18,7 +18,7 @@ const createPayment = async (req, res) => {
 
     const cachedCart = await redisClient.get(`cart:${userId}`);
     console.log("API KEY EXISTS:", !!process.env.api_key);
-console.log("SECRET EXISTS:", !!process.env.KEY_Secret);
+console.log("SECRET EXISTS:", !!process.env.Key_Secret);
 
     let cartData;
 
@@ -99,7 +99,7 @@ const verifyPayment = async (req, res) => {
     const generatedSignature = crypto
       .createHmac(
         "sha256",
-        process.env.KEY_Secret
+        process.env.Key_Secret
       )
       .update(
         razorpay_order_id + "|" + razorpay_payment_id
