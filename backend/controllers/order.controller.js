@@ -17,6 +17,8 @@ const createPayment = async (req, res) => {
     const userId = req.user.id;
 
     const cachedCart = await redisClient.get(`cart:${userId}`);
+    console.log("API KEY EXISTS:", !!process.env.api_key);
+console.log("SECRET EXISTS:", !!process.env.KEY_SECRET);
 
     let cartData;
 
