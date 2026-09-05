@@ -1,186 +1,547 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background: #f5f5f5;
-}
-
-/* =========================
-   MODAL OVERLAY
-========================= */
 
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 25px;
+
+  background: rgba(28, 23, 19, 0.68);
+
+  backdrop-filter: blur(8px);
+
+  animation: modalOverlayIn 0.25s ease forwards;
+}
+
+@keyframes modalOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-content {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+
+  width: min(900px, 100%);
+
+  min-height: 570px;
+
+  background: #f8f3eb;
+
+  box-shadow:
+    0 35px 90px rgba(20, 15, 10, 0.35);
+
+  animation: modalContentIn 0.4s ease forwards;
+}
+
+@keyframes modalContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.modal-close {
+  position: absolute;
+
+  top: 17px;
+  right: 18px;
+
+  z-index: 10;
+
+  width: 35px;
+  height: 35px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  z-index: 1000;
-}
+  border: 1px solid rgba(255, 255, 255, 0.3);
 
-/* =========================
-   MODAL
-========================= */
+  border-radius: 50%;
 
-.modal-content {
-  background: white;
-  padding: 32px;
-  border-radius: 12px;
-  width: 380px;
-  max-width: 90%;
+  background: rgba(35, 29, 24, 0.2);
 
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  color: #f8f3eb;
 
-  animation: slideDown 0.3s ease;
-}
+  font-size: 24px;
+  font-weight: 300;
 
-@keyframes slideDown {
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
+  line-height: 1;
 
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* =========================
-   HEADING
-========================= */
-
-.modal-content h2 {
-  margin-bottom: 24px;
-  text-align: center;
-  color: #1a1a2e;
-}
-
-/* =========================
-   FORM
-========================= */
-
-.modal-content form {
-  width: 100%;
-}
-
-.modal-content input {
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 14px;
-
-  border: 1px solid #ddd;
-  border-radius: 8px;
-
-  font-size: 1rem;
-  outline: none;
-
-  transition: border 0.2s, box-shadow 0.2s;
-}
-
-.modal-content input:focus {
-  border-color: #4a6cf7;
-  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
-}
-
-/* =========================
-   ALL BUTTONS
-========================= */
-
-.modal-content button {
   cursor: pointer;
-  border: none;
-  outline: none;
-  font-size: 0.95rem;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* =========================
-   SUBMIT BUTTON
-========================= */
+.modal-close:hover {
+  background: rgba(35, 29, 24, 0.45);
 
-.modal-content form button[type="submit"] {
-  width: 100%;
-  padding: 12px;
-
-  background: #4a6cf7;
-  color: white;
-
-  border-radius: 8px;
-
-  font-size: 1rem;
-  font-weight: 600;
-
-  margin-top: 4px;
-  margin-bottom: 18px;
-
-  transition: background 0.2s;
+  transform: rotate(90deg);
 }
 
-.modal-content form button[type="submit"]:hover {
-  background: #3a56d4;
+/* =========================================================
+   LEFT ART PANEL
+========================================================= */
+
+.modal-art {
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      rgba(42, 34, 27, 0.72),
+      rgba(42, 34, 27, 0.82)
+    ),
+    url("/images/bookstore-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  color: #f8f1e7;
 }
 
-/* =========================
-   ACCOUNT TEXT
-========================= */
+/*
+  If you don't have bookstore-bg.jpg,
+  the panel will still work because of the background color.
+*/
 
-.modal-content p {
-  text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 10px;
+.modal-art::before {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  right: -140px;
+  top: -120px;
+
+  border: 1px solid rgba(211, 178, 130, 0.25);
+
+  border-radius: 50%;
 }
 
-/* =========================
-   CREATE ACCOUNT / SIGN IN
-========================= */
+.modal-art::after {
+  content: "";
 
-.modal-content > button:not(:last-child) {
+  position: absolute;
+
+  width: 200px;
+  height: 200px;
+
+  left: -120px;
+  bottom: -100px;
+
+  border: 1px solid rgba(211, 178, 130, 0.2);
+
+  border-radius: 50%;
+}
+
+.modal-art-inner {
+  position: relative;
+
+  z-index: 2;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 55px;
+}
+
+.modal-art-label {
+  position: absolute;
+
+  top: 42px;
+  left: 55px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #c8a978;
+}
+
+.modal-book-mark {
+  margin-bottom: 8px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 65px;
+
+  line-height: 0.5;
+
+  color: #c5a06c;
+}
+
+.modal-art h3 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 44px;
+  font-weight: 400;
+
+  line-height: 1.02;
+
+  letter-spacing: -1.5px;
+}
+
+.modal-art h3 em {
+  color: #c4a06b;
+}
+
+.modal-art-line {
+  width: 45px;
+  height: 1px;
+
+  margin: 28px 0 18px;
+
+  background: #b08c5d;
+}
+
+.modal-art p {
+  max-width: 260px;
+
+  margin: 0;
+
+  color: #c3b9ad;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+.modal-est {
+  position: absolute;
+
+  bottom: 38px;
+  left: 55px;
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  color: #8e8175;
+}
+
+/* =========================================================
+   FORM PANEL
+========================================================= */
+
+.modal-form {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 60px 65px;
+
+  background: #f8f3eb;
+
+  color: #2c261f;
+}
+
+.modal-form-header {
+  margin-bottom: 30px;
+}
+
+.modal-eyebrow {
   display: block;
-  margin: 0 auto 18px;
+
+  margin-bottom: 12px;
+
+  color: #9a7951;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+}
+
+.modal-form-header h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 43px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -1px;
+}
+
+.modal-form-header p {
+  margin: 12px 0 0;
+
+  color: #857a6e;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   FORM FIELDS
+========================================================= */
+
+.form-field {
+  margin-bottom: 21px;
+}
+
+.form-field label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #8d7b68;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.7px;
+}
+
+.form-field input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px 0;
+
+  border: none;
+  border-bottom: 1px solid #cfc3b4;
+
+  outline: none;
 
   background: transparent;
-  color: #4a6cf7;
 
-  font-weight: 600;
+  color: #302921;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.25s ease,
+    padding-left 0.25s ease;
 }
 
-.modal-content > button:not(:last-child):hover {
-  text-decoration: underline;
+.form-field input::placeholder {
+  color: #b2a79a;
 }
 
-/* =========================
-   CANCEL BUTTON
-========================= */
+.form-field input:focus {
+  border-bottom-color: #9b794f;
 
-.modal-content > button:last-child {
-  display: block;
+  padding-left: 5px;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.auth-submit {
   width: 100%;
 
-  padding: 11px;
+  min-height: 53px;
 
-  background: #f1f1f1;
-  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  border-radius: 8px;
+  margin-top: 8px;
 
-  font-size: 0.9rem;
+  padding: 0 19px;
 
-  margin-top: 4px;
+  border: 1px solid #2d2721;
 
-  transition: background 0.2s;
+  background: #2d2721;
+
+  color: #f8f2e9;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
-.modal-content > button:last-child:hover {
-  background: #e5e5e5;
+.auth-submit:hover {
+  background: #8d6d48;
+
+  transform: translateY(-2px);
+}
+
+.auth-arrow {
+  font-size: 21px;
+
+  font-weight: 300;
+
+  transition: transform 0.25s ease;
+}
+
+.auth-submit:hover .auth-arrow {
+  transform: translateX(5px);
+}
+
+/* =========================================================
+   SWITCH
+========================================================= */
+
+.auth-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  margin-top: 24px;
+
+  color: #95897d;
+
+  font-size: 10px;
+}
+
+.auth-switch button {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #8b6b45;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.auth-switch button:hover {
+  color: #5f4630;
+}
+
+/* =========================================================
+   FOOTER NOTE
+========================================================= */
+
+.modal-footer-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 30px;
+
+  color: #aaa095;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 10px;
+
+  font-style: italic;
+}
+
+.modal-footer-note span {
+  color: #b18d5d;
+  font-style: normal;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 750px) {
+  .modal-content {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+
+    max-width: 470px;
+  }
+
+  .modal-art {
+    display: none;
+  }
+
+  .modal-form {
+    padding: 55px 45px;
+  }
+
+  .modal-close {
+    background: #2d2721;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 15px;
+  }
+
+  .modal-form {
+    padding: 50px 28px 35px;
+  }
+
+  .modal-form-header h2 {
+    font-size: 37px;
+  }
+
+  .modal-form-header p {
+    font-size: 11px;
+  }
+
+  .modal-close {
+    top: 13px;
+    right: 13px;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 21px;
+  }
 }

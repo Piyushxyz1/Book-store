@@ -1,0 +1,476 @@
+
+/* =========================================================
+   PREMIUM BOOKSTORE WELCOME PAGE
+========================================================= */
+
+.welcome-page {
+  position: relative;
+  min-height: calc(100vh - 82px);
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 80px 6%;
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(190, 160, 115, 0.14),
+      transparent 28%
+    ),
+    #f6f1e8;
+
+  color: #29231d;
+}
+
+/* =========================================================
+   DECORATIVE BACKGROUND CIRCLES
+========================================================= */
+
+.welcome-bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.welcome-circle-one {
+  width: 430px;
+  height: 430px;
+
+  right: -170px;
+  top: -120px;
+
+  border: 1px solid rgba(139, 111, 71, 0.18);
+}
+
+.welcome-circle-two {
+  width: 280px;
+  height: 280px;
+
+  left: -150px;
+  bottom: -100px;
+
+  border: 1px solid rgba(139, 111, 71, 0.13);
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(850px, 100%);
+
+  text-align: center;
+
+  animation: welcomeFadeUp 0.9s ease forwards;
+}
+
+@keyframes welcomeFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.welcome-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  margin-bottom: 28px;
+
+  color: #8b6f47;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.eyebrow-line {
+  width: 35px;
+  height: 1px;
+  background: #bda98d;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.welcome-title {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(58px, 8vw, 105px);
+  font-weight: 400;
+
+  line-height: 0.91;
+  letter-spacing: -4px;
+
+  color: #29231d;
+}
+
+.welcome-title em {
+  font-weight: 400;
+  color: #8b6f47;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.welcome-description {
+  width: min(590px, 100%);
+
+  margin: 35px auto 0;
+
+  color: #786e64;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+
+.welcome-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 45px;
+
+  min-width: 205px;
+
+  margin-top: 34px;
+
+  padding: 17px 20px 17px 24px;
+
+  border: 1px solid #2c2722;
+
+  background: #2c2722;
+
+  color: #f8f2e8;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.welcome-button::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 0;
+
+  background: #b18b59;
+
+  transition: height 0.3s ease;
+
+  z-index: 0;
+}
+
+.welcome-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-button:hover {
+  transform: translateY(-3px);
+}
+
+.welcome-button:hover::before {
+  height: 100%;
+}
+
+.welcome-arrow {
+  font-size: 21px;
+  font-weight: 300;
+
+  transition: transform 0.3s ease;
+}
+
+.welcome-button:hover .welcome-arrow {
+  transform: translateX(5px);
+}
+
+/* =========================================================
+   BOTTOM INFORMATION
+========================================================= */
+
+.welcome-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 65px;
+
+  border-top: 1px solid #d9d0c4;
+  border-bottom: 1px solid #d9d0c4;
+
+  padding: 20px 0;
+}
+
+.welcome-info-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  min-width: 165px;
+
+  text-align: left;
+}
+
+.info-number {
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 16px;
+
+  color: #b08d60;
+}
+
+.welcome-info-item strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  color: #342c25;
+}
+
+.welcome-info-item p {
+  margin: 0;
+
+  font-size: 9px;
+
+  letter-spacing: 0.5px;
+
+  color: #9b9084;
+}
+
+.welcome-info-divider {
+  width: 1px;
+  height: 35px;
+
+  background: #d8cec0;
+}
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.welcome-quote {
+  position: absolute;
+
+  right: 5%;
+  bottom: 7%;
+
+  width: 210px;
+
+  color: #9a8d7e;
+
+  text-align: left;
+}
+
+.quote-mark {
+  display: block;
+
+  height: 18px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 42px;
+
+  line-height: 1;
+
+  color: #b2946b;
+}
+
+.welcome-quote p {
+  margin: 8px 0 10px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  font-style: italic;
+}
+
+.quote-author {
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  color: #a49788;
+}
+
+/* =========================================================
+   ESTABLISHED
+========================================================= */
+
+.welcome-est {
+  position: absolute;
+
+  left: 5%;
+  bottom: 7%;
+
+  writing-mode: vertical-rl;
+
+  font-size: 9px;
+  letter-spacing: 3px;
+
+  color: #aa9d8d;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+  .welcome-quote {
+    display: none;
+  }
+
+  .welcome-est {
+    display: none;
+  }
+
+  .welcome-title {
+    font-size: clamp(55px, 9vw, 85px);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .welcome-page {
+    min-height: calc(100vh - 82px);
+
+    padding: 60px 25px;
+  }
+
+  .welcome-eyebrow {
+    margin-bottom: 22px;
+
+    font-size: 8px;
+    letter-spacing: 3px;
+  }
+
+  .eyebrow-line {
+    width: 25px;
+  }
+
+  .welcome-title {
+    font-size: clamp(48px, 14vw, 70px);
+
+    line-height: 0.95;
+
+    letter-spacing: -2.5px;
+  }
+
+  .welcome-description {
+    margin-top: 27px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+  .welcome-button {
+    margin-top: 28px;
+  }
+
+  .welcome-info {
+    margin-top: 50px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+    padding: 20px 5px;
+  }
+
+  .welcome-info-divider {
+    display: none;
+  }
+
+  .welcome-info-item {
+    min-width: 0;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+  .welcome-page {
+    padding: 50px 20px;
+  }
+
+  .welcome-title {
+    font-size: 48px;
+  }
+
+  .welcome-description {
+    font-size: 12px;
+  }
+
+  .welcome-info {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .welcome-info-item {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .welcome-button {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

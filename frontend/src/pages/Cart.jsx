@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./cartItems.css";
 import axios from "axios";
@@ -6,8 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const Cart = ({ token ,url}) => {
- 
+const Cart = ({ token, url }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -93,12 +93,10 @@ const Cart = ({ token ,url}) => {
             );
 
             if (verifyResponse.data.success) {
-              // Remove purchased items from Redux
               cartItems.forEach((item) => {
                 dispatch(removeFromCart(item));
               });
 
-              // Go to success page
               navigate("/success", {
                 state: {
                   username: verifyResponse.data.username,
@@ -118,7 +116,7 @@ const Cart = ({ token ,url}) => {
         },
 
         theme: {
-          color: "#2563eb",
+          color: "#8b6f47",
         },
 
         modal: {
@@ -151,152 +149,264 @@ const Cart = ({ token ,url}) => {
     <div className="cart-page">
       <div className="cart-wrapper">
 
-        {/* HEADER */}
-        <div className="cart-page-header">
-          <div>
-            <span className="cart-label">YOUR CART</span>
-            <h1>Shopping Cart</h1>
+        {/* ================= HEADER ================= */}
+        <header className="cart-page-header">
+          <div className="cart-heading-content">
+            <span className="cart-label">YOUR COLLECTION</span>
+
+            <h1>Your Shopping Cart</h1>
+
             <p>
               {cartItems.length}{" "}
-              {cartItems.length === 1 ? "item" : "items"} in your cart
+              {cartItems.length === 1 ? "book" : "books"} ready
+              for checkout
             </p>
           </div>
-        </div>
 
+          <div className="cart-header-decoration">
+            <span>BOOKSTORE</span>
+            <span>EST. 2026</span>
+          </div>
+        </header>
+
+        {/* ================= EMPTY CART ================= */}
         {cartItems.length === 0 ? (
-          /* EMPTY CART */
           <div className="empty-cart">
-            <div className="empty-cart-icon">🛒</div>
 
-            <h2>Your cart is empty</h2>
+            <div className="empty-book-icon">
+              <span>📖</span>
+            </div>
+
+            <span className="empty-label">
+              NOTHING HERE YET
+            </span>
+
+            <h2>Your reading list is waiting.</h2>
 
             <p>
-              Looks like you haven't added any books yet.
+              Discover something worth reading and add your
+              favorite books to your collection.
             </p>
 
             <a href="/" className="continue-shopping">
-              Continue Shopping
+              Explore Books
+              <span>→</span>
             </a>
+
           </div>
         ) : (
+
+          /* ================= CART CONTENT ================= */
           <div className="cart-layout">
 
-            {/* LEFT SIDE */}
-            <div className="cart-items-section">
+            {/* ================= LEFT ================= */}
+            <section className="cart-items-section">
 
-              {cartItems.map((item, index) => {
-                const price = Number(item.price) || 0;
-                const quantity = Number(item.quantity) || 0;
-                const itemTotal = price * quantity;
+              <div className="cart-section-heading">
+                <div>
+                  <span>YOUR BOOKS</span>
+                  <h2>Selected Titles</h2>
+                </div>
 
-                return (
-                  <div
-                    key={item.id || item._id || index}
-                    className="cart-item"
-                  >
+                <span className="cart-count">
+                  {cartItems.length.toString().padStart(2, "0")}
+                </span>
+              </div>
 
-                    {/* IMAGE */}
-                    <div className="cart-item-image">
-                      {item.image ? (
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                        />
-                      ) : (
-                        <div className="image-placeholder">
-                          📚
+              <div className="cart-items-list">
+
+                {cartItems.map((item, index) => {
+                  const price = Number(item.price) || 0;
+                  const quantity = Number(item.quantity) || 0;
+                  const itemTotal = price * quantity;
+
+                  return (
+                    <article
+                      key={item.id || item._id || index}
+                      className="cart-item"
+                    >
+
+                      {/* BOOK NUMBER */}
+                      <div className="cart-item-number">
+                        {(index + 1)
+                          .toString()
+                          .padStart(2, "0")}
+                      </div>
+
+                      {/* IMAGE */}
+                      <div className="cart-item-image">
+                        {item.image ? (
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                          />
+                        ) : (
+                          <div className="image-placeholder">
+                            📚
+                          </div>
+                        )}
+                      </div>
+
+                      {/* CONTENT */}
+                      <div className="cart-item-content">
+
+                        <div className="cart-item-info">
+
+                          <span className="book-label">
+                            BOOK
+                          </span>
+
+                          <h3>{item.name}</h3>
+
+                          <p className="item-price">
+                            ${price.toFixed(2)}
+                          </p>
+
+                          <div className="item-meta">
+                            <span>
+                              Qty. {quantity}
+                            </span>
+
+                            <span className="meta-dot">
+                              •
+                            </span>
+
+                            <span>
+                              Paperback
+                            </span>
+                          </div>
+
                         </div>
-                      )}
-                    </div>
 
-                    {/* CONTENT */}
-                    <div className="cart-item-content">
+                        <div className="cart-item-bottom">
 
-                      <div className="cart-item-info">
-                        <span className="book-label">
-                          BOOK
-                        </span>
+                          <strong className="item-total">
+                            ${itemTotal.toFixed(2)}
+                          </strong>
 
-                        <h3>{item.name}</h3>
+                          <button
+                            className="remove-btn"
+                            onClick={() =>
+                              removeItemsFromCart(item)
+                            }
+                          >
+                            <span>×</span>
+                            Remove
+                          </button>
 
-                        <p className="item-price">
-                          ${price.toFixed(2)}
-                        </p>
-
-                        <p className="item-quantity">
-                          Quantity: {quantity}
-                        </p>
-                      </div>
-
-                      <div className="cart-item-bottom">
-
-                        <strong className="item-total">
-                          ${itemTotal.toFixed(2)}
-                        </strong>
-
-                        <button
-                          className="remove-btn"
-                          onClick={() =>
-                            removeItemsFromCart(item)
-                          }
-                        >
-                          Remove
-                        </button>
+                        </div>
 
                       </div>
 
-                    </div>
+                    </article>
+                  );
+                })}
 
-                  </div>
-                );
-              })}
-
-            </div>
-
-            {/* RIGHT SIDE */}
-            <div className="cart-summary">
-
-              <div className="summary-header">
-                <span>SUMMARY</span>
-                <h2>Order Summary</h2>
               </div>
 
-              <div className="summary-row">
-                <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+              <a
+                href="/"
+                className="continue-browsing"
+              >
+                <span>←</span>
+                Continue browsing
+              </a>
+
+            </section>
+
+            {/* ================= RIGHT ================= */}
+            <aside className="cart-summary">
+
+              <div className="summary-top">
+                <span className="summary-label">
+                  ORDER SUMMARY
+                </span>
+
+                <h2>
+                  Your
+                  <br />
+                  Order
+                </h2>
               </div>
 
-              <div className="summary-row">
-                <span>Tax</span>
-                <span>${tax.toFixed(2)}</span>
+              <div className="summary-books">
+
+                <div className="summary-mini-row">
+                  <span>Books</span>
+                  <span>
+                    {cartItems.length
+                      .toString()
+                      .padStart(2, "0")}
+                  </span>
+                </div>
+
+              </div>
+
+              <div className="summary-prices">
+
+                <div className="summary-row">
+                  <span>Subtotal</span>
+                  <span>
+                    ${subtotal.toFixed(2)}
+                  </span>
+                </div>
+
+                <div className="summary-row">
+                  <span>Tax</span>
+                  <span>
+                    ${tax.toFixed(2)}
+                  </span>
+                </div>
+
               </div>
 
               <div className="summary-divider"></div>
 
-              <div className="summary-row total">
-                <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+              <div className="summary-total">
+                <div>
+                  <span>TOTAL</span>
+                  <strong>
+                    ${total.toFixed(2)}
+                  </strong>
+                </div>
               </div>
 
               <button
                 className="pay-now-btn"
                 onClick={handlePayment}
               >
-                Pay Now
-                <span>→</span>
+                <span>Proceed to Payment</span>
+                <span className="payment-arrow">
+                  →
+                </span>
               </button>
 
               <div className="secure-payment">
-                <span>🔒</span>
+
+                <div className="secure-icon">
+                  ✓
+                </div>
+
                 <div>
-                  <strong>Secure Checkout</strong>
+                  <strong>
+                    Secure Checkout
+                  </strong>
+
                   <p>
-                    Your payment is securely processed by Razorpay.
+                    Payments are securely processed
+                    by Razorpay.
                   </p>
                 </div>
+
               </div>
 
-            </div>
+              <div className="summary-note">
+                <span>✦</span>
+                Thank you for supporting independent
+                reading.
+              </div>
+
+            </aside>
 
           </div>
         )}
@@ -306,3 +416,6 @@ const Cart = ({ token ,url}) => {
 };
 
 export default Cart;
+
+
+
