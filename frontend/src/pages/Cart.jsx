@@ -93,7 +93,7 @@ const Cart = ({ token, url }) => {
                 },
               }
             );
-
+                 console.log(response)
             if (verifyResponse.data.success) {
               cartItems.forEach((item) => {
                 dispatch(removeFromCart(item));

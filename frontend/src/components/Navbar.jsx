@@ -285,7 +285,7 @@ const Navbar = ({ token, onLogout ,url }) => {
 
         {/* LOGO */}
 
-        <div className="logo" onClick={()=>navigate("/")}>
+        <div className="logo" onClick={()=>navigate("/home")}>
 
           Book<span>Store</span>
 
