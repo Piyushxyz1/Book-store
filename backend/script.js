@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://frontend-gs5h.onrender.com"
+    "https://the-book-store-l54q.onrender.com/"
   ],
   credentials: true
 }));
