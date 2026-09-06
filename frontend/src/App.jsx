@@ -51,7 +51,9 @@ const App = () => {
       );
 
       if (response.data.success) {
-        toast.success(response.data.message);
+        toast.success(response.data.message, {
+          toastId: "cart-success",
+        });
         dispatch(addToCartRedux(product));
       }
     } catch (error) {
@@ -86,13 +88,13 @@ const App = () => {
 
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer position="top-center" />
       <Navbar
         token={token} onLogout={onLogout} navigate={navigate} url={url}
       />
       <Routes>
-        <Route path='/' element = {<Welcome/>} />
-        <Route path = '/home' element = { token?<Home addToCart={addToCart}/>: <Navigate to={'/'}/>}/>
+        <Route path='/' element={<Welcome />} />
+        <Route path='/home' element={token ? <Home addToCart={addToCart} /> : <Navigate to={'/'} />} />
         <Route path='/cart' element={token ? <Cart token={token} url={url} /> : <Navigate to="/" />} />
         <Route path='/book/:id' element={<BookContent />} />
         <Route path='/category/:categoryName' element={<CategoryPage addToCart={addToCart} />} />

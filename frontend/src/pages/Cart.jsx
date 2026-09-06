@@ -5,7 +5,7 @@ import axios from "axios";
 import { removeFromCart } from "../reduxStore/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = ({ token, url }) => {
   const dispatch = useDispatch();
@@ -28,7 +28,9 @@ const Cart = ({ token, url }) => {
       );
 
       if (response.data.success) {
-        toast.success(response.data.message);
+        toast.success(response.data.message, {
+          toastId: "removed from cart"
+        });
         dispatch(removeFromCart(product));
       } else {
         toast.error(response.data.message);
@@ -188,10 +190,10 @@ const Cart = ({ token, url }) => {
               favorite books to your collection.
             </p>
 
-            <a href="/" className="continue-shopping">
+            <Link to={"/home"} className="continue-shopping">
               Explore Books
               <span>→</span>
-            </a>
+            </Link>
 
           </div>
         ) : (
