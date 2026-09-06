@@ -91,17 +91,8 @@ const App = () => {
         token={token} onLogout={onLogout} navigate={navigate} url={url}
       />
       <Routes>
-        <Route
-          path={token ? "/home" : "/"}
-          element={
-            token ? (
-              <Home token={token} addToCart={addToCart} />
-            ) : (
-              <Welcome />
-            )
-          }
-        />
-
+        <Route path='/' element = {<Welcome/>} />
+        <Route path = '/home' element = { token?<Home/>: <Navigate to={'/'}/>}/>
         <Route path='/cart' element={token ? <Cart token={token} url={url} /> : <Navigate to="/" />} />
         <Route path='/book/:id' element={<BookContent />} />
         <Route path='/category/:categoryName' element={<CategoryPage addToCart={addToCart} />} />
