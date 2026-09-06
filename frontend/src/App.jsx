@@ -25,7 +25,7 @@ const App = () => {
   const token = localStorage.getItem("token");
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch()
-  const url = import.meta.env.VITE_API_URL || "http://localhost:4000";
+  const url = import.meta.env.VITE_API_URL || "http://localhost:4000" ;
 
   const onLogout = () => {
     localStorage.removeItem("token");
@@ -88,25 +88,25 @@ const App = () => {
     <div>
       <ToastContainer />
       <Navbar
-        token={token} onLogout={onLogout} navigate={navigate} url={url}
+        token={token} onLogout={onLogout} navigate={navigate} url = {url}
       />
       <Routes>
         <Route
-          path={token ? "/home" : "/"}
+          path="/"
           element={
-            token ? (
-              <Home token={token} addToCart={addToCart} />
-            ) : (
-              <Welcome />
-            )
+            !token ? <Welcome /> : <Navigate to="/home" />
           }
+        />
+        <Route
+          path="/home"
+          element={<Home token={token} addToCart={addToCart} />}
         />
 
         <Route path='/cart' element={token ? <Cart token={token} url={url} /> : <Navigate to="/" />} />
-        <Route path='/book/:id' element={<BookContent />} />
-        <Route path='/category/:categoryName' element={<CategoryPage addToCart={addToCart} />} />
-        <Route path="/success" element={<PaymentSuccess />} />
-        <Route path="/failure" element={<PaymentFailed />} />
+        <Route path='/book/:id'element= {<BookContent/>}/>   
+        <Route path='/category/:categoryName' element={<CategoryPage  addToCart = {addToCart} />} />
+        <Route path = "/success" element = {<PaymentSuccess/>}/>
+        <Route path = "/failure" element = {<PaymentFailed/>}/>
       </Routes>
       <ScrollToTop />
     </div>
