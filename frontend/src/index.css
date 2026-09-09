@@ -1,3 +1,34 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #f3f0ea;
+  color: #171614;
+}
+
+.home {
+  overflow: hidden;
+  background: #f3f0ea;
+}
+
 
 .modal-overlay {
   position: fixed;

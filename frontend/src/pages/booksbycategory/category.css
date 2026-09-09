@@ -1,8 +1,9 @@
 .category-page {
   min-height: 100vh;
-  background: #f7f7f7;
+  background: #ffffff;
   padding: 25px 7% 60px;
   color: #222;
+  margin-top: 100px;
 }
 
 
@@ -26,13 +27,6 @@
    CATEGORY HERO
 ========================= */
 
-.category-hero {
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 12px;
-  padding: 45px 50px;
-  margin-bottom: 25px;
-}
 
 .category-hero-content {
   max-width: 850px;
@@ -76,12 +70,7 @@
 ========================= */
 
 .category-info {
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  padding: 25px 30px;
   margin-bottom: 40px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -17,7 +17,10 @@ const book = (
   description,
   price,
   imageIndex = 0,
-  href = "#"
+  href = `/book/${name
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "")}`
 ) => ({
   id: bookId++,
   name,
@@ -38,7 +41,7 @@ export const categoryData = {
     subtitle: "Our Most Popular Books",
     description: "Discover the books loved by readers everywhere.",
     books: [
-      book("The Psychology of Money", "Morgan Housel", 399, 0),
+      book("Psychology of Money", "Morgan Housel", 399, 0),
       book("Atomic Habits", "James Clear", 449, 1),
       book("The Alchemist", "Paulo Coelho", 299, 2),
       book("Ikigai", "Héctor García", 349, 3),

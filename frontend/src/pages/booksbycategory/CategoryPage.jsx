@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import categoryData from "./CategoryData";
+import booksData from "../../components/book-content/booksData";
 import "./category.css";
 import ProductCard from "../../components/productCard";
 
@@ -24,7 +25,7 @@ const CategoryPage = ({ addToCart }) => {
       <section className="category-hero">
 
         <div className="category-hero-content">
-          <span className="category-label">BOOK COLLECTION</span>
+         
 
           <h1>{category.title}</h1>
 
