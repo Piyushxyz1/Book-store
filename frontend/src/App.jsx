@@ -88,7 +88,7 @@ const App = () => {
 
   return (
     <div>
-      <ToastContainer position="top-center" />
+      
       <Navbar
         token={token} onLogout={onLogout} navigate={navigate} url={url}
       />

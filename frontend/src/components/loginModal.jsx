@@ -47,6 +47,7 @@ const LoginModal = ({ isOpen, onClose, url }) => {
 
         if (response.ok) {
           localStorage.setItem("token", data.token);
+          toast.success(`Welcome ${data.user.name}`)
 
           navigate("/home");
           onClose();

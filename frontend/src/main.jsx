@@ -5,12 +5,17 @@ import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import { store } from "./reduxStore/store";
+import { ToastContainer } from 'react-toastify';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <Provider store={store}>
+    <Provider store={store}>
       <BrowserRouter>
+        <ToastContainer
+          position="top-center"
+          style={{ zIndex: 999999 }}
+        />
         <App />
       </BrowserRouter>
     </Provider>
