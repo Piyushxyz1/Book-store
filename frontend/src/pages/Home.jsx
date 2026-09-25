@@ -498,7 +498,7 @@ const Home = ({ addToCart }) => {
 
 
 
-      <Footer/>
+    
 
     </div>
   );
