@@ -34,36 +34,41 @@ const App = () => {
 
 
 
-  const addToCart = async (product) => {
-    try {
-      const response = await axios.post(
-        `${url}/api/cart/add`,
-        {
-          itemId: product.id,
-          productName: product.name,
-          price: product.price,
+const addToCart = async (product) => {
+  try {
+    const response = await axios.post(
+      `${url}/api/cart/add`,
+      {
+        itemId: product.id,
+        productName: product.name,
+        price: product.price,
+      },
+      {
+        headers: {
+          token: token,
         },
-        {
-          headers: {
-            token: token,
-          },
-        }
-      );
+      }
+    );
 
-      if (response.data.success) {
-        toast.success(response.data.message, {
-          toastId: "cart-success",
-        });
-        dispatch(addToCartRedux(product));
-      }
-      else{
-        toast.error("please login or create account to add items to the cart");
-      }
-    } catch (error) {
-     console.log(error)
+    if (response.data.success) {
+      toast.success(response.data.message, {
+        toastId: "cart-success",
+      });
+
+      dispatch(addToCartRedux(product));
+    } else {
+      toast.error("Please login or create an account to add items to the cart");
     }
-  };
+  } catch (error) {
+    console.log(error);
 
+    if (error.response?.status === 401 || error.response?.status === 403) {
+      toast.error("Please login or create an account to add items to the cart");
+    } else {
+      toast.error("Unable to add item to cart");
+    }
+  }
+};
 
 
 
