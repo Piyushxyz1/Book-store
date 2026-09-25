@@ -36,7 +36,7 @@ const Footer = () => {
           </p>
 
           <Link
-            to="/"
+            to="/products"
             className="footer-cta"
           >
             Explore our collection
