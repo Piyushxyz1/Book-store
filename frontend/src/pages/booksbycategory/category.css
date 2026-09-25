@@ -76,11 +76,7 @@
    HERO TYPOGRAPHY
 ========================================================= */
 
-.category-hero h1,
-.books-header h2,
-.category-footer h2 {
-  font-family: "Playfair Display", serif;
-}
+
 
 .category-hero h1 {
   margin: 0 0 12px;
