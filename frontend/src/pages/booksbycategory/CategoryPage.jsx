@@ -74,16 +74,6 @@ const CategoryPage = ({ addToCart }) => {
             </p>
           </div>
 
-          <div className="sort-box">
-            <span>Sort by</span>
-            <select>
-              <option>Popularity</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-              <option>Newest</option>
-            </select>
-          </div>
-
         </div>
 
         <div className="books-grid">
