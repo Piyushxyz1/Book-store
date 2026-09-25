@@ -18,6 +18,7 @@ import { addToCart as addToCartRedux } from "../src/reduxStore/cartSlice";
 import ScrollToTop from './components/ScrollToTop';
 import PaymentSuccess from './pages/paymentverificationpages/PaymentSuccess';
 import PaymentFailed from './pages/paymentverificationpages/PaymentFailed';
+import OurStory from './pages/about/OurStory';
 
 
 const App = () => {
@@ -108,6 +109,7 @@ const addToCart = async (product) => {
         <Route path='/category/:categoryName' element={<CategoryPage addToCart={addToCart} />} />
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/failure" element={<PaymentFailed />} />
+        <Route path="/about" element={<OurStory />} />
       </Routes>
       <ScrollToTop />
     </div>
