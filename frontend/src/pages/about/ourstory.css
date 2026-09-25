@@ -1,0 +1,287 @@
+.our-story {
+  background: #0a0a0a;
+  color: #f3efe7;
+  min-height: 100vh;
+}
+
+
+/* =========================
+   COMMON
+========================= */
+
+.story-eyebrow {
+  display: inline-block;
+  color: #a9824c;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.story-hero {
+  min-height: 720px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  border-bottom: 1px solid rgba(169, 130, 76, 0.3);
+}
+
+.story-hero-content {
+  padding: 150px 8vw 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-hero-content h1 {
+  margin: 25px 0;
+  max-width: 650px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -3px;
+}
+
+.story-hero-content h1 em {
+  color: #a9824c;
+  font-style: italic;
+}
+
+.story-hero-content p {
+  max-width: 540px;
+  color: #a7a39b;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.story-hero-image {
+  min-height: 720px;
+  overflow: hidden;
+}
+
+.story-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72);
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.story-intro {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 70px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 140px 40px;
+}
+
+.story-intro-number {
+  color: #a9824c;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  padding-top: 8px;
+}
+
+.story-intro-content h2 {
+  margin: 25px 0 35px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.story-intro-content p {
+  max-width: 720px;
+  color: #a7a39b;
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   PHILOSOPHY
+========================= */
+
+.story-philosophy {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 120px 7vw;
+}
+
+.story-philosophy-heading h2 {
+  margin-top: 25px;
+  font-family: Georgia, serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.story-values {
+  margin-top: 90px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.story-values article {
+  padding: 0 45px;
+  border-left: 1px solid rgba(169, 130, 76, 0.35);
+}
+
+.story-values article:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.story-values span {
+  color: #a9824c;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.story-values h3 {
+  margin: 25px 0 15px;
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.story-values p {
+  color: #97938c;
+  line-height: 1.8;
+  max-width: 300px;
+}
+
+
+/* =========================
+   QUOTE
+========================= */
+
+.story-quote {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 30px;
+}
+
+.quote-mark {
+  color: #a9824c;
+  font-family: Georgia, serif;
+  font-size: 80px;
+  line-height: 0.5;
+}
+
+.story-quote blockquote {
+  max-width: 900px;
+  margin: 40px 0 0;
+  font-family: Georgia, serif;
+  font-size: clamp(34px, 5vw, 62px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.story-cta {
+  padding: 120px 30px;
+  text-align: center;
+  border-top: 1px solid rgba(169, 130, 76, 0.3);
+}
+
+.story-cta h2 {
+  margin: 25px auto 45px;
+  font-family: Georgia, serif;
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.story-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  padding: 16px 24px;
+  color: #0a0a0a;
+  background: #a9824c;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: 0.3s ease;
+}
+
+.story-button span {
+  font-size: 18px;
+}
+
+.story-button:hover {
+  background: #c19a62;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+  .story-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .story-hero-content {
+    padding: 110px 30px 70px;
+  }
+
+  .story-hero-image {
+    min-height: 450px;
+  }
+
+  .story-intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 90px 30px;
+  }
+
+  .story-values {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .story-values article,
+  .story-values article:first-child {
+    padding: 0 0 0 25px;
+    border-left: 1px solid rgba(169, 130, 76, 0.35);
+  }
+
+  .story-philosophy {
+    padding: 90px 30px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .story-hero-content h1 {
+    letter-spacing: -2px;
+  }
+
+  .story-quote {
+    min-height: 400px;
+  }
+}
