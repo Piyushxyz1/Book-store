@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import categoryData from "../pages/category/CategoryData";
+import categoryData from "../pages/booksbycategory/CategoryData";
 import "./footer.css";
 
 const Footer = () => {
