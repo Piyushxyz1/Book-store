@@ -19,6 +19,8 @@ import ScrollToTop from './components/ScrollToTop';
 import PaymentSuccess from './pages/paymentverificationpages/PaymentSuccess';
 import PaymentFailed from './pages/paymentverificationpages/PaymentFailed';
 import OurStory from './pages/about/OurStory';
+import Books from './pages/books/Books';
+import Footer from "./components/Footer"
 
 
 const App = () => {
@@ -110,8 +112,11 @@ const addToCart = async (product) => {
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/failure" element={<PaymentFailed />} />
         <Route path="/about" element={<OurStory />} />
+        <Route path="/products" element={<Books />} />
       </Routes>
+
       <ScrollToTop />
+      <Footer/>
     </div>
   )
 }

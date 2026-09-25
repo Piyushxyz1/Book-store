@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import "./Cart.css";
 import ProductCard from "../components/productCard";
-import Footer from "../components/Footer";
+
 
 const Home = ({ addToCart }) => {
   const products = [
@@ -497,9 +497,6 @@ const Home = ({ addToCart }) => {
       </section>
 
 
-      {/* =====================================================
-          FOOTER
-      ===================================================== */}
 
       <Footer/>
 
