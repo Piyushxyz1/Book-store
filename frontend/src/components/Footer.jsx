@@ -1,147 +1,142 @@
-
-{/* =====================================================
-    FOOTER
-===================================================== */}
-import React from 'react'
-import "./footer.css"
+import React from "react";
+import { Link } from "react-router-dom";
+import categoryData from "../pages/category/CategoryData";
+import "./footer.css";
 
 const Footer = () => {
+  // Selected categories from categoryData
+  const categories = [
+    "BW Bestsellers",
+    "New Releases",
+    "Fantasy",
+    "Classic Fiction",
+    "Thriller / Suspense Fiction",
+    "History",
+    "Self-help, Personal Development and Practical Advice",
+    "Action and Adventure Stories",
+  ];
+
   return (
+    <footer className="footer">
 
-    
+      <div className="footer-main">
 
-<footer className="footer">
+        {/* BRAND */}
 
-  <div className="footer-main">
+        <div className="footer-brand">
 
-    {/* BRAND */}
+          <div className="footer-logo">
+            BOOK<span>STORE</span>
+          </div>
 
-    <div className="footer-brand">
+          <p className="footer-description">
+            A carefully curated space for stories,
+            ideas, knowledge and books worth
+            spending time with.
+          </p>
 
-      <div className="footer-logo">
-        BOOK<span>STORE</span>
+          <Link
+            to="/"
+            className="footer-cta"
+          >
+            Explore our collection
+            <span>↗</span>
+          </Link>
+
+        </div>
+
+
+        {/* NAVIGATION */}
+
+        <div className="footer-column">
+
+          <h4>Explore</h4>
+
+          <Link to="/">
+            Home
+          </Link>
+
+          <Link to="/about">
+            Our Story
+          </Link>
+
+          <Link to="/products">
+            Books
+          </Link>
+
+          <Link to="/category/New%20Releases">
+            New Arrivals
+          </Link>
+
+        </div>
+
+
+        {/* CATEGORIES */}
+
+        <div className="footer-column">
+
+          <h4>Categories</h4>
+
+          {categories.slice(0, 4).map((categoryName) => (
+            <Link
+              key={categoryName}
+              to={`/category/${encodeURIComponent(categoryName)}`}
+            >
+              {categoryData[categoryName].title}
+            </Link>
+          ))}
+
+        </div>
+
+
+        {/* MORE CATEGORIES */}
+
+        <div className="footer-column">
+
+          <h4>More to Explore</h4>
+
+          {categories.slice(4).map((categoryName) => (
+            <Link
+              key={categoryName}
+              to={`/category/${encodeURIComponent(categoryName)}`}
+            >
+              {categoryData[categoryName].title}
+            </Link>
+          ))}
+
+        </div>
+
       </div>
 
-      <p className="footer-description">
-        A carefully curated space for stories,
-        ideas, knowledge and books worth
-        spending time with.
-      </p>
 
-      <a
-        href="#products"
-        className="footer-cta"
-      >
-        Explore our collection
-        <span>↗</span>
-      </a>
+      {/* FOOTER BOTTOM */}
 
-    </div>
+      <div className="footer-bottom">
 
+        <span>
+          © 2026 BookStore. All rights reserved.
+        </span>
 
-    {/* NAVIGATION */}
+        <div>
 
-    <div className="footer-column">
+          <Link to="/privacy">
+            Privacy
+          </Link>
 
-      <h4>Explore</h4>
+          <Link to="/terms">
+            Terms
+          </Link>
 
-      <a href="#home">
-        Home
-      </a>
+          <a href="#top">
+            Back to top ↑
+          </a>
 
-      <a href="#about">
-        Our Story
-      </a>
+        </div>
 
-      <a href="#products">
-        Books
-      </a>
+      </div>
 
-      <a href="#products">
-        New Arrivals
-      </a>
+    </footer>
+  );
+};
 
-    </div>
-
-
-    {/* CATEGORIES */}
-
-    <div className="footer-column">
-
-      <h4>Categories</h4>
-
-      <a href="#products">
-        Self Development
-      </a>
-
-      <a href="#products">
-        Business
-      </a>
-
-      <a href="#products">
-        Finance
-      </a>
-
-      <a href="#products">
-        Fiction
-      </a>
-
-    </div>
-
-
-    {/* INFORMATION */}
-
-    <div className="footer-column footer-info">
-
-      <h4>BookStore</h4>
-
-      <p>
-        Discover your next great read
-        and make every page count.
-      </p>
-
-      <span>
-        Open every day
-      </span>
-
-      <span>
-        Online bookstore
-      </span>
-
-    </div>
-
-  </div>
-
-
-  {/* FOOTER BOTTOM */}
-
-  <div className="footer-bottom">
-
-    <span>
-      © 2026 BookStore. All rights reserved.
-    </span>
-
-    <div>
-      <a href="#home">
-        Privacy
-      </a>
-
-      <a href="#home">
-        Terms
-      </a>
-
-      <a href="#home">
-        Back to top ↑
-      </a>
-    </div>
-
-  </div>
-
-</footer>
-
-
-    
-  )
-}
-
-export default Footer
+export default Footer;
