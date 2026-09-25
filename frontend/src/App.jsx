@@ -56,8 +56,11 @@ const App = () => {
         });
         dispatch(addToCartRedux(product));
       }
+      else{
+        toast.error("please login or create account to add items to the cart");
+      }
     } catch (error) {
-      toast.error(error.message);
+     console.log(error)
     }
   };
 
