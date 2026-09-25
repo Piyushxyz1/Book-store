@@ -50,19 +50,6 @@
   max-width: 900px;
 }
 
-.category-hero::after {
-  content: "";
-
-  position: absolute;
-
-  right: 0;
-  bottom: 28px;
-
-  width: 70px;
-  height: 2px;
-
-  background: #2563eb;
-}
 
 
 /* =========================================================
@@ -81,7 +68,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
 
-  color: #2563eb;
+  color: #a9824c;
 }
 
 
