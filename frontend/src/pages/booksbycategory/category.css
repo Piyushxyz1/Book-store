@@ -1,114 +1,243 @@
+/* =========================================================
+   CATEGORY PAGE
+========================================================= */
+
 .category-page {
   min-height: 100vh;
-  background: #ffffff;
-  padding: 25px 7% 60px;
-  color: #222;
+  background: #f7f8fa;
+  padding: 32px 7% 80px;
+  color: #1f2933;
   margin-top: 100px;
 }
 
 
-/* =========================
+/* =========================================================
    BREADCRUMB
-========================= */
+========================================================= */
 
 .breadcrumb {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-bottom: 28px;
+
+  font-size: 13px;
+  font-weight: 500;
+  color: #7b8794;
 }
 
 .breadcrumb span {
-  margin: 0 8px;
-  color: #aaa;
+  margin: 0;
+  color: #b8c0c8;
 }
 
 
-/* =========================
+/* =========================================================
    CATEGORY HERO
-========================= */
+========================================================= */
 
+.category-hero {
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f8fafc 55%,
+      #eef3f7 100%
+    );
+
+  border: 1px solid #e3e8ed;
+  border-radius: 18px;
+
+  padding: 55px 60px;
+
+  margin-bottom: 28px;
+
+  box-shadow:
+    0 8px 30px rgba(31, 41, 51, 0.06);
+}
+
+.category-hero::before {
+  content: "";
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -90px;
+  top: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.category-hero::after {
+  content: "";
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: 100px;
+  bottom: -120px;
+
+  border-radius: 50%;
+
+  background: rgba(37, 99, 235, 0.035);
+}
 
 .category-hero-content {
+  position: relative;
+  z-index: 1;
+
   max-width: 850px;
 }
+
+
+/* =========================================================
+   HERO LABEL
+========================================================= */
 
 .category-label,
 .section-label {
   display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #777;
-  margin-bottom: 12px;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+
+  color: #2563eb;
+
+  margin-bottom: 13px;
 }
 
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
 .category-hero h1 {
-  margin: 0 0 8px;
-  font-size: 38px;
-  line-height: 1.2;
-  color: #181818;
+  margin: 0 0 10px;
+
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.12;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+
+  color: #17202a;
 }
 
 .category-hero h2 {
-  margin: 0 0 18px;
-  font-size: 19px;
+  margin: 0 0 20px;
+
+  font-size: 20px;
+  line-height: 1.5;
+
   font-weight: 500;
-  color: #666;
+
+  color: #52606d;
 }
 
 .category-hero p {
-  margin: 8px 0;
+  margin: 10px 0;
+
   max-width: 800px;
+
   font-size: 15px;
-  line-height: 1.7;
-  color: #666;
+  line-height: 1.8;
+
+  color: #68737d;
 }
 
 
-/* =========================
+/* =========================================================
    CATEGORY INFO
-========================= */
+========================================================= */
 
 .category-info {
-  margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
+
+  gap: 35px;
+
+  background: #ffffff;
+
+  border: 1px solid #e3e8ed;
+  border-radius: 14px;
+
+  padding: 25px 30px;
+
+  margin-bottom: 50px;
+
+  box-shadow: 0 5px 20px rgba(31, 41, 51, 0.04);
 }
 
 .category-info h3 {
-  margin: 0 0 6px;
-  font-size: 20px;
+  margin: 0 0 7px;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  color: #202b33;
 }
 
 .category-info p {
   margin: 0;
-  color: #777;
+
+  color: #7b8794;
+
   font-size: 14px;
+  line-height: 1.6;
 }
 
+
+/* =========================================================
+   CATEGORY STATS
+========================================================= */
+
 .category-stats {
-  min-width: 130px;
+  min-width: 160px;
+
   text-align: center;
-  padding-left: 30px;
-  border-left: 1px solid #ddd;
+
+  padding-left: 35px;
+
+  border-left: 1px solid #e1e5e8;
 }
 
 .category-stats strong {
   display: block;
-  font-size: 28px;
+
+  margin-bottom: 3px;
+
+  font-size: 30px;
+  line-height: 1;
+
+  font-weight: 800;
+
+  color: #2563eb;
 }
 
 .category-stats span {
-  font-size: 13px;
-  color: #777;
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #7b8794;
 }
 
 
-/* =========================
+/* =========================================================
    BOOK SECTION
-========================= */
+========================================================= */
 
 .books-section {
   margin-top: 10px;
@@ -118,108 +247,201 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
   gap: 30px;
-  margin-bottom: 25px;
+
+  margin-bottom: 28px;
 }
 
 .books-header h2 {
-  margin: 0 0 6px;
-  font-size: 28px;
+  margin: 0 0 7px;
+
+  font-size: 30px;
+  line-height: 1.2;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+
+  color: #17202a;
 }
 
 .books-header p {
   margin: 0;
-  color: #777;
+
+  max-width: 600px;
+
+  color: #7b8794;
+
   font-size: 14px;
+  line-height: 1.6;
 }
 
 
-/* =========================
+/* =========================================================
+   BOOK GRID
+========================================================= */
+
+.books-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 24px;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
    SORT
-========================= */
+========================================================= */
 
 .sort-box {
   display: flex;
   align-items: center;
+
   gap: 10px;
 }
 
 .sort-box span {
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #68737d;
 }
 
 .sort-box select {
   padding: 10px 14px;
-  border: 1px solid #d8d8d8;
-  border-radius: 6px;
-  background: white;
-  font-size: 14px;
+
+  border: 1px solid #d9e0e6;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #26323b;
+
+  font-size: 13px;
+  font-weight: 500;
+
   cursor: pointer;
   outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.sort-box select:hover {
+  border-color: #aeb8c2;
+}
+
+.sort-box select:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 
-/* =========================
-   BOOK GRID
-========================= */
-
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-}
-
-
-/* =========================
-   FOOTER CONTENT
-========================= */
+/* =========================================================
+   CATEGORY FOOTER
+========================================================= */
 
 .category-footer {
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  margin-top: 55px;
-  padding: 35px 40px;
+  position: relative;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e6ea;
+  border-radius: 16px;
+
+  margin-top: 65px;
+
+  padding: 42px 50px;
+
   text-align: center;
+
+  box-shadow: 0 6px 24px rgba(31, 41, 51, 0.04);
+}
+
+.category-footer::before {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  left: -120px;
+  top: -120px;
+
+  border-radius: 50%;
+
+  background: rgba(37, 99, 235, 0.045);
 }
 
 .category-footer h2 {
-  margin: 0 0 12px;
-  font-size: 25px;
+  position: relative;
+
+  margin: 0 0 13px;
+
+  font-size: 26px;
+  font-weight: 800;
+
+  color: #17202a;
 }
 
 .category-footer p {
+  position: relative;
+
   max-width: 800px;
-  margin: 8px auto;
-  color: #777;
+
+  margin: 9px auto;
+
+  color: #737f89;
+
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 1100px) {
-  .books-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 850px) {
-
   .category-page {
-    padding: 20px 5% 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .books-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .category-hero {
-    padding: 35px;
+    padding: 48px;
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+  .category-page {
+    padding: 25px 4% 60px;
+  }
+
+  .category-hero {
+    padding: 40px;
   }
 
   .category-hero h1 {
-    font-size: 32px;
+    font-size: 34px;
   }
 
   .books-header {
@@ -232,39 +454,118 @@
   }
 }
 
-@media (max-width: 650px) {
 
-  .books-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .category-page {
+    margin-top: 85px;
+
+    padding: 20px 18px 50px;
+  }
+
+  .breadcrumb {
+    margin-bottom: 20px;
+
+    font-size: 12px;
+  }
+
+  .category-hero {
+    padding: 32px 25px;
+
+    border-radius: 14px;
+  }
+
+  .category-hero h1 {
+    font-size: 30px;
+  }
+
+  .category-hero h2 {
+    font-size: 17px;
+  }
+
+  .category-hero p {
+    font-size: 14px;
+    line-height: 1.7;
   }
 
   .category-info {
     flex-direction: column;
+    align-items: stretch;
+
+    gap: 22px;
+
+    padding: 22px;
   }
 
   .category-stats {
-    border-left: none;
-    border-top: 1px solid #ddd;
-    padding: 20px 0 0;
     width: 100%;
+
+    border-left: none;
+    border-top: 1px solid #e1e5e8;
+
+    padding: 20px 0 0;
+  }
+
+  .books-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+
+  .books-header h2 {
+    font-size: 25px;
+  }
+
+  .category-footer {
+    margin-top: 45px;
+
+    padding: 32px 22px;
+  }
+
+  .category-footer h2 {
+    font-size: 23px;
   }
 }
 
-@media (max-width: 450px) {
 
-  .books-grid {
-    grid-template-columns: 1fr;
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+  .category-page {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
   .category-hero {
-    padding: 25px;
+    padding: 28px 21px;
   }
 
   .category-hero h1 {
     font-size: 27px;
+
+    letter-spacing: -0.5px;
+  }
+
+  .category-hero h2 {
+    font-size: 16px;
+  }
+
+  .books-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
   }
 
   .category-footer {
-    padding: 25px;
+    padding: 28px 20px;
+  }
+
+  .category-footer h2 {
+    font-size: 21px;
   }
 }
