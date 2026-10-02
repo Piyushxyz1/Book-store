@@ -118,8 +118,4 @@ Book Store is a completed MERN-based e-commerce project developed to practice fu
 
 **Piyush Negi**
 
-Full Stack Developer
 
-GitHub: `<your-github-profile>`
-
-Portfolio: `<your-portfolio>`
