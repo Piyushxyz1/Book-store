@@ -9,7 +9,7 @@ const cartSlice = createSlice({
   initialState,
 
   reducers: {
-    // Backend se complete cart Redux mein set karne ke liye
+   
     setCartItems: (state, action) => {
       state.items = action.payload;
     },
