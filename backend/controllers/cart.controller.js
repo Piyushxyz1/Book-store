@@ -70,7 +70,7 @@ const removeFromCart = async (req, res) => {
   try {
 
     const { itemId } = req.body;
-    console.log(itemId)
+   
 
     const userId = req.user.id;
 
