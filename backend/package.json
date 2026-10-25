@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
    "test": "echo \"Backend tests not configured yet\"",
-    "start": "nodemon script.js"
+    "start": "node script.js"
   },
   "author": "",
   "license": "ISC",
