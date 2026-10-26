@@ -18,7 +18,7 @@ const createPayment = async (req, res) => {
 
     const cachedCart = await redisClient.get(`cart:${userId}`);
 
-   
+  
 
     let cartData;
 

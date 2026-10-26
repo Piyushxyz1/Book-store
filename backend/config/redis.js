@@ -3,13 +3,12 @@ import { configDotenv } from "dotenv";
 
 configDotenv();
 
-
 const redisClient = createClient({
-  url: process.env.REDIS_URL
+  url: process.env.REDIS_URL,
 });
 
 redisClient.on("error", (err) => {
-  console.log("Redis Error:", err);
+  console.error("Redis Error:", err);
 });
 
 await redisClient.connect();
